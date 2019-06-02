@@ -1,19 +1,20 @@
 console.log('App.js is running');
 
-// Create app object -- title and subtitle (both strings)
-// Use title and subtitle in the template
-// Render template
+// only render the subtitle and p tag if subtitle exists -- use and operator
+// render new p tag - if options.length > 0 'Here are your options' else 'No options' -- use teranary operator
 
-var appObject = {
+var app = {
     title: 'Indecision App',
-    subtitle: 'Put your life in the hands of a computer'
+    subtitle: 'Put your life in the hands of a computer',
+    options: ['One', 'Two']
 }
 
 // JSX - JavaScript XML
 var template = (
     <div>
-        <h1>{appObject.title}</h1>
-        <p>{appObject.subtitle}</p>
+        <h1>{app.title}</h1>
+        {app.subtitle && <p>{app.subtitle}</p>}
+        <p>{app.options.length ? 'Here are your options: ' + app.options : 'No options'}</p>
     </div>
 );
 
@@ -23,11 +24,17 @@ var user = {
     location: 'Voorburg'
 };
 
+function getLocation(location) {
+  if (location){
+      return <p>Location: {location}</p>;
+  }
+}
+
 var templateTwo = (
     <div>
-        <h1>{user.name}</h1>
-        <p>Age: {user.age}</p>
-        <p>Location: {user.location}</p>
+        <h1>{user.name ? user.name : 'Anonymous'}</h1>
+        {user.age && user.age >= 18 && <p>Age: {user.age}</p>}
+        {getLocation(user.location)}
     </div>
 );
 
