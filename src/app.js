@@ -33,25 +33,21 @@ function getLocation(location) {
 let count = 0;
 
 const addOne = () => {
-    console.log('Add one')
+    count++;
+    renderCounterApp();
 };
 
 const minusOne = () => {
-    console.log('Minus one')
+    // Subtract one - rerender
+    count--;
+    renderCounterApp();
 };
 
 const reset = () => {
-    console.log('reset')
+    // Set count to 0
+    count = 0;
+    renderCounterApp();
 };
-
-const templateTwo = (
-    <div>
-        <h1>Count: {count}</h1>
-        <button onClick={addOne}>+1</button>
-        <button onClick={minusOne}>-1</button>
-        <button onClick={reset}>reset</button>
-    </div>
-);
 
 // Challenge
 // Make button "-1" - set up minusOne function and register.  Log "minusOne"
@@ -60,4 +56,17 @@ const templateTwo = (
 
 const appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+const renderCounterApp = () => {
+    const templateTwo = (
+        <div>
+            <h1>Count: {count}</h1>
+            <button onClick={addOne}>+1</button>
+            <button onClick={minusOne}>-1</button>
+            <button onClick={reset}>reset</button>
+        </div>
+    );
+
+    ReactDOM.render(templateTwo, appRoot);
+};
+
+renderCounterApp();
