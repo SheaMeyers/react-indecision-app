@@ -2,106 +2,89 @@
 
 console.log('App.js is running');
 
-// only render the subtitle and p tag if subtitle exists -- use and operator
-// render new p tag - if options.length > 0 'Here are your options' else 'No options' -- use teranary operator
-
 var app = {
     title: 'Indecision App',
     subtitle: 'Put your life in the hands of a computer',
-    options: ['One', 'Two']
-
-    // JSX - JavaScript XML
-};var template = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        app.title
-    ),
-    app.subtitle && React.createElement(
-        'p',
-        null,
-        app.subtitle
-    ),
-    React.createElement(
-        'p',
-        null,
-        app.options.length ? 'Here are your options: ' + app.options : 'No options'
-    )
-);
-
-var user = {
-    name: 'Shea',
-    age: 28,
-    location: 'Voorburg'
+    options: []
 };
 
-function getLocation(location) {
-    if (location) {
-        return React.createElement(
-            'p',
-            null,
-            'Location: ',
-            location
-        );
+var onFormSubmit = function onFormSubmit(e) {
+    // e = Event Object
+    e.preventDefault();
+
+    var option = e.target.elements.option.value; // Option refers to name in input tag
+
+    if (option) {
+        app.options.push(option);
+        e.target.elements.option.value = '';
+        // Call to render function
+        render();
     }
-}
-
-var count = 0;
-
-var addOne = function addOne() {
-    count++;
-    renderCounterApp();
 };
 
-var minusOne = function minusOne() {
-    // Subtract one - rerender
-    count--;
-    renderCounterApp();
+var onRemoveAll = function onRemoveAll() {
+    app.options = [];
+    render();
 };
-
-var reset = function reset() {
-    // Set count to 0
-    count = 0;
-    renderCounterApp();
-};
-
-// Challenge
-// Make button "-1" - set up minusOne function and register.  Log "minusOne"
-// Make reset button "reset" - setup reset function - log "reset"
-
 
 var appRoot = document.getElementById('app');
 
-var renderCounterApp = function renderCounterApp() {
-    var templateTwo = React.createElement(
+var render = function render() {
+    var template = React.createElement(
         'div',
         null,
         React.createElement(
             'h1',
             null,
-            'Count: ',
-            count
+            app.title
+        ),
+        app.subtitle && React.createElement(
+            'p',
+            null,
+            app.subtitle
+        ),
+        React.createElement(
+            'p',
+            null,
+            app.options.length ? 'Here are your options: ' : 'No options'
+        ),
+        React.createElement(
+            'p',
+            null,
+            app.options.length
         ),
         React.createElement(
             'button',
-            { onClick: addOne },
-            '+1'
+            { onClick: onRemoveAll },
+            'Remove All'
         ),
         React.createElement(
-            'button',
-            { onClick: minusOne },
-            '-1'
+            'ol',
+            null,
+            React.createElement(
+                'li',
+                null,
+                'Item One'
+            ),
+            React.createElement(
+                'li',
+                null,
+                'Item Two'
+            )
         ),
         React.createElement(
-            'button',
-            { onClick: reset },
-            'reset'
+            'form',
+            { onSubmit: onFormSubmit },
+            React.createElement('input', { type: 'text', name: 'option' }),
+            React.createElement(
+                'button',
+                null,
+                'Add Option'
+            )
         )
     );
 
-    ReactDOM.render(templateTwo, appRoot);
+    ReactDOM.render(template, appRoot);
 };
-
-renderCounterApp();
+// Call to render function
+render();
