@@ -38,9 +38,6 @@ var IndecisionApp = function (_React$Component) {
     return IndecisionApp;
 }(React.Component);
 
-// Set up an options prop for the Options component
-// Render the length of the array
-
 var Header = function (_React$Component2) {
     _inherits(Header, _React$Component2);
 
@@ -108,16 +105,20 @@ var Action = function (_React$Component3) {
 var Options = function (_React$Component4) {
     _inherits(Options, _React$Component4);
 
-    function Options() {
+    function Options(props) {
         _classCallCheck(this, Options);
 
-        return _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).apply(this, arguments));
+        var _this4 = _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).call(this, props));
+
+        _this4.handleRemoveAll = _this4.handleRemoveAll.bind(_this4);
+        return _this4;
     }
 
     _createClass(Options, [{
         key: 'handleRemoveAll',
         value: function handleRemoveAll() {
-            alert('Remove All Options button clicked');
+            console.log(this.props.options);
+            //alert('Remove All Options button clicked')
         }
     }, {
         key: 'render',
@@ -162,10 +163,6 @@ var Option = function (_React$Component5) {
 
     return Option;
 }(React.Component);
-
-// 1. Set up the form with text input and submit button
-// 2. Wire up onSubmit
-// 3. handleAddOption -> fetch the value typed -> if value, alert
 
 var AddOption = function (_React$Component6) {
     _inherits(AddOption, _React$Component6);

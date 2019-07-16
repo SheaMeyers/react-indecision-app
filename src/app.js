@@ -15,9 +15,6 @@ class IndecisionApp extends React.Component {
     }
 }
 
-// Set up an options prop for the Options component
-// Render the length of the array
-
 class Header extends React.Component {
     render() {
         return (
@@ -45,8 +42,14 @@ class Action extends React.Component {
 
 class Options extends React.Component {
     
+    constructor(props) {
+        super(props);
+        this.handleRemoveAll = this.handleRemoveAll.bind(this);
+    }
+
     handleRemoveAll() {
-        alert('Remove All Options button clicked')
+        console.log(this.props.options);
+        //alert('Remove All Options button clicked')
     }
 
     render() {
@@ -70,10 +73,6 @@ class Option extends React.Component {
         );
     }
 }
-
-// 1. Set up the form with text input and submit button
-// 2. Wire up onSubmit
-// 3. handleAddOption -> fetch the value typed -> if value, alert
 
 class AddOption extends React.Component {
     
