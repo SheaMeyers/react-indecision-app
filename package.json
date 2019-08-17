@@ -5,6 +5,10 @@
   "repository": "https://github.com/SheaMeyers/react-indecision-app.git",
   "author": "SheaMeyers <shea.meyers@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "serve": "live-server public/",
+    "build": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch"
+  },
   "dependencies": {
     "babel-cli": "6.24.1",
     "babel-core": "6.25.0",
@@ -12,7 +16,7 @@
     "babel-plugin-transform-class-properties": "6.24.1",
     "babel-preset-env": "1.5.2",
     "babel-preset-react": "6.24.1",
-    "live-server": "^1.2.0",
+    "live-server": "^1.2.1",
     "react": "15.6.1",
     "react-dom": "15.6.1",
     "react-modal": "2.2.2",
