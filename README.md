@@ -6,9 +6,8 @@ https://www.udemy.com/react-2nd-edition/
 
 
 To run use 
-`live-server public` 
+`yarn run serve` 
 from this directory
 
-Run
-`babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch`
-to watch for changes in the code
+To build use
+`yarn run build`
