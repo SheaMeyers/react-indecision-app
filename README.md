@@ -7,4 +7,6 @@ from this directory
 To build use
 `yarn run build`
 
-Live demo here: https://sheameyers.com/react-indecision-app/
+## Live demo here
+
+https://sheameyers.com/react-indecision-app/
