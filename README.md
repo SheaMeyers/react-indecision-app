@@ -9,4 +9,4 @@ To build use
 
 ## Live demo here
 
-https://sheameyers.com/react-indecision-app/
+https://indecision-app.sheameyers.com/
